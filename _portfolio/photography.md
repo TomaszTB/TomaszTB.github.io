@@ -1,0 +1,21 @@
+---
+title: "Photography"
+excerpt: "Photos that Tomasz is proud of... like this one below<br/><img src='/images/photography/10-GreenLizzard.jpg'>"
+collection: portfolio
+---
+
+{% assign photography_images = site.static_files | where_exp: "file", "file.path contains '/images/photography/'" | sort: "path" %}
+{% assign image_extensions = "jpg,jpeg,png,gif,webp,avif" | split: "," %}
+
+{% for image in photography_images %}
+{% assign extension = image.extname | remove_first: "." | downcase %}
+{% if image_extensions contains extension %}
+{% assign filename = image.name | split: "." | first %}
+{% assign alt_text = filename | replace: "-", " " | replace: "_", " " %}
+
+[![{{ alt_text }}]({{ image.path | relative_url }})]({{ image.path | relative_url }})
+
+---
+
+{% endif %}
+{% endfor %}
