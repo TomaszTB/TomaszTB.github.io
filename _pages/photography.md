@@ -1,7 +1,9 @@
 ---
+layout: single
 title: "Photography"
-excerpt: "Photos that Tomasz is proud of... like this one below<br/><img src='/images/photography/10-GreenLizzard.jpg'>"
-collection: portfolio
+permalink: /photography/
+author_profile: false
+page_class: photography-page
 ---
 
 {% assign photography_images = site.static_files | where_exp: "file", "file.path contains '/images/photography/'" | sort: "path" %}

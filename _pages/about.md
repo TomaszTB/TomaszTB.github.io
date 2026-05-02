@@ -14,7 +14,7 @@ I mostly work with the autonomy team on enabling our robots to perform autonomou
 This has required various work, including:
 * Writing sensor drivers to grab images from RealSense and StereoLabs ZED cameras,
 * Using GPU-accelerated compression algorithms to compress those images,
-* Creating classes to publish the compressed images over ROS 2,
+* Creating classes to publish the compressed images using ROS 2,
 * Integrating AI models such as YOLO and FoundationPose to detect objects and estimate their
 poses from the images,
 * Helping implement a scene graph and behavior tree to command the robot based on information
@@ -25,5 +25,5 @@ I'm also passionate about photography. Both film, and digital.
 I am particularly happy when robotics and photography intersect:
 when I get the opportunity to take beautiful pictures of our robots.
 Unfortunately, I haven't received permission to share those photos yet, so you won't find them here.
-Feel free to take a glance at my [photography portfolio](/portfolio/) to see some of the (non-robot) 
-photos I've taken. Hopefully I'll be able to share more soon. 
+Feel free to take a glance at my [photography page](/photography/) to see some of the (non-robot)
+photos I've taken. Hopefully, I'll be able to share more soon.
