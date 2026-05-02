@@ -7,6 +7,7 @@ collection: portfolio
 {% assign photography_images = site.static_files | where_exp: "file", "file.path contains '/images/photography/'" | sort: "path" %}
 {% assign image_extensions = "jpg,jpeg,png,gif,webp,avif" | split: "," %}
 
+<div class="photography-gallery" markdown="1">
 {% for image in photography_images %}
 {% assign extension = image.extname | remove_first: "." | downcase %}
 {% if image_extensions contains extension %}
@@ -15,7 +16,6 @@ collection: portfolio
 
 [![{{ alt_text }}]({{ image.path | relative_url }})]({{ image.path | relative_url }})
 
----
-
 {% endif %}
 {% endfor %}
+</div>
