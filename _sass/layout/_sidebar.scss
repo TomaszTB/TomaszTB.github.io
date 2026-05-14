@@ -7,8 +7,8 @@
    ========================================================================== */
 
 .sidebar {
-  -webkit-transform: translate3d(0, 0 , 0);
-          transform: translate3d(0, 0 , 0);
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 
   @include clearfix();
   margin-bottom: 1em;
@@ -154,12 +154,12 @@
   }
 
   img {
-    max-width: 175px;
-    border-radius: 50%;
+    width: 80%;
+    height: auto;
 
     @include breakpoint($large) {
-      padding: 5px;
-      border: 1px solid var(--global-border-color);
+      padding: 2px;
+      border: 3px solid var(--global-border-color);
     }
   }
 }

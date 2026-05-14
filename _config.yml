@@ -23,7 +23,7 @@ repository               : "TomaszTB/TomaszTB.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "portrait2.jpg"
+  avatar           : "icon-fullsize.png"
   name             : "Tomasz Bialek"
   pronouns         : # example: "she/her"
   bio              : "Robotics software engineer who enjoys photography"
