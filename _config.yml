@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-site_theme               : "contrast" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
+site_theme               : "fun" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
 title                    : "Tomasz Bialek"
 title_separator          : "-"
 name                     : &name "Tomasz Bialek"
