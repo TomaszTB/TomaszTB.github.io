@@ -35,7 +35,7 @@ $sidebar-link-max-width     : 250px;
 $sidebar-screen-min-width   : 1024px;
 
 /* Dark theme for the site */
-html[data-theme="dark"] {
+@mixin dark-theme-vars {
   --global-base-color                 : #{$primary-color};
   --global-bg-color                   : #{$background};
   --global-footer-bg-color            : #{$footer};
@@ -57,19 +57,19 @@ html[data-theme="dark"] {
   --global-selection-text-color       : #{$selection-text};
 }
 
-/* Text selection styling for dark theme */
-html[data-theme="dark"] ::selection {
-  background-color: var(--global-selection-bg-color);
-  color: var(--global-selection-text-color);
-}
+@mixin dark-theme-overrides {
+  /* Text selection styling for dark theme */
+  ::selection {
+    background-color: var(--global-selection-bg-color);
+    color: var(--global-selection-text-color);
+  }
 
-html[data-theme="dark"] ::-moz-selection {
-  background-color: var(--global-selection-bg-color);
-  color: var(--global-selection-text-color);
-}
+  ::-moz-selection {
+    background-color: var(--global-selection-bg-color);
+    color: var(--global-selection-text-color);
+  }
 
-/* Override notice colors for high contrast in dark mode */
-html[data-theme="dark"] {
+  /* Override notice colors for high contrast in dark mode */
   .page__content {
     .notice,
     .notice--primary,
@@ -115,5 +115,17 @@ html[data-theme="dark"] {
 
   .page__footer {
     color: #{$text};
+  }
+}
+
+html[data-theme="dark"] {
+  @include dark-theme-vars;
+  @include dark-theme-overrides;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme-setting="light"]) {
+    @include dark-theme-vars;
+    @include dark-theme-overrides;
   }
 }

@@ -33,7 +33,7 @@ $sidebar-link-max-width     : 250px;
 $sidebar-screen-min-width   : 1024px;
 
 /* Dark theme for the site */
-html[data-theme="dark"] {
+@mixin dark-theme-vars {
   --global-base-color                 : #{$primary-color};
   --global-bg-color                   : #{$background};
   --global-footer-bg-color            : #{$footer};
@@ -50,12 +50,23 @@ html[data-theme="dark"] {
   --global-text-color                 : #{$text};
   --global-text-color-light           : #{$text-muted};
   --global-thead-color                : #{$background-lighter};
-
 }
 
-/* Footer styling for dark mode */
-html[data-theme="dark"] {
+@mixin dark-theme-overrides {
+  /* Footer styling for dark mode */
   footer {
     color: #{$text};
+  }
+}
+
+html[data-theme="dark"] {
+  @include dark-theme-vars;
+  @include dark-theme-overrides;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme-setting="light"]) {
+    @include dark-theme-vars;
+    @include dark-theme-overrides;
   }
 }

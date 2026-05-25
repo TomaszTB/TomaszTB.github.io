@@ -11,14 +11,14 @@ const MERMAID_URL = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.mi
 
 // Determine the expected state of the theme toggle, which can be "dark", "light", or
 // "system". Default is "system".
-function determineThemeSetting(){
+function determineThemeSetting() {
   let themeSetting = localStorage.getItem("theme");
   return (themeSetting != "dark" && themeSetting != "light" && themeSetting != "system") ? "system" : themeSetting;
 }
 
 // Determine the computed theme, which can be "dark" or "light". If the theme setting is
 // "system", the computed theme is determined based on the user's system preference.
-function determineComputedTheme(){
+function determineComputedTheme() {
   let themeSetting = determineThemeSetting();
   if (themeSetting != "system") {
     return themeSetting;
@@ -30,21 +30,11 @@ function determineComputedTheme(){
 function updateTheme() {
   // Update the theme setting icon
   const theme_setting = determineThemeSetting();
-  const $themeIcon = $("#theme-icon");
-
-  $themeIcon.removeClass("fa-sun fa-moon fa-adjust");
-  if (theme_setting === "system") {
-    $themeIcon.addClass("fa-adjust");
-  } else if (theme_setting === "dark") {
-    $themeIcon.addClass("fa-moon");
-  } else if (theme_setting === "light") {
-    $themeIcon.addClass("fa-sun");
-  }
+  const $html = $("html");
+  $html.attr("data-theme-setting", theme_setting);
 
   // Update the site theme
   const use_theme = determineComputedTheme();
-  const $html = $("html");
-
   if (use_theme === "dark") {
     $html.attr("data-theme", "dark");
   } else {
@@ -172,22 +162,6 @@ $(document).ready(function () {
 
   // Enable the theme toggle
   $('#theme-toggle').on('click', toggleThemeSetting);
-
-  // Enable the sticky footer
-  var bumpIt = function () {
-    $("body").css("padding-bottom", "0");
-    $("body").css("margin-bottom", $(".page__footer").outerHeight(true));
-  }
-  $(window).resize(function () {
-    didResize = true;
-  });
-  setInterval(function () {
-    if (didResize) {
-      didResize = false;
-      bumpIt();
-    }}, 250);
-  var didResize = false;
-  bumpIt();
 
   // Follow menu drop down
   $(".author__urls-wrapper button").on("click", function () {

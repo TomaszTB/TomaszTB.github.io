@@ -231,6 +231,11 @@
         display: flex;
         justify-content: center;
         cursor: pointer;
+
+        /* Default state: hide all specialized icons */
+        .theme-icon-dark, .theme-icon-light, .theme-icon-system {
+          display: none;
+        }
       }
     }
 
@@ -442,3 +447,8 @@
     }
   }
 }
+
+/* Show the correct icon based on the setting */
+html[data-theme-setting="system"] .theme-icon-system { display: inline-block !important; }
+html[data-theme-setting="dark"] .theme-icon-dark { display: inline-block !important; }
+html[data-theme-setting="light"] .theme-icon-light { display: inline-block !important; }

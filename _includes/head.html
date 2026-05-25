@@ -9,7 +9,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script>
-  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  /* Theme provider to avoid flashing */
+  (function() {
+    var themeSetting = localStorage.getItem("theme") || "system";
+    var html = document.documentElement;
+    html.setAttribute("data-theme-setting", themeSetting);
+
+    if (themeSetting === "dark") {
+      html.setAttribute("data-theme", "dark");
+    } else if (themeSetting === "light") {
+      html.removeAttribute("data-theme");
+    }
+
+    html.classList.add("preload");
+    html.className = html.className.replace(/\bno-js\b/g, '') + ' js ';
+  })();
 </script>
 
 <!-- For all browsers -->
