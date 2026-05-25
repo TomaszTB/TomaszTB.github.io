@@ -6,7 +6,7 @@ author_profile: false
 page_class: photography-page
 ---
 
-{% assign photography_images = site.static_files | where_exp: "file", "file.path contains '/images/photography/'" | sort: "path" %}
+{% assign photography_images = site.static_files | where_exp: "file", "file.path contains '/images/photography/thumbs'" | sort: "path" %}
 {% assign image_extensions = "jpg,jpeg,png,gif,webp,avif" | split: "," %}
 
 <div class="photography-gallery">
@@ -15,8 +15,9 @@ page_class: photography-page
   {% if image_extensions contains extension %}
   {% assign filename = image.name | split: "." | first %}
   {% assign alt_text = filename | replace: "-", " " | replace: "_", " " %}
+  {% assign full_res_path = image.path | replace: "/images/photography/thumbs/", "/images/photography/" %}
 
-  <a href="{{ image.path | relative_url }}">
+  <a href="{{ full_res_path | relative_url }}">
     <img src="{{ image.path | relative_url }}" alt="{{ alt_text }}" class="clickable-img">
   </a>
 
