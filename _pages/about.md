@@ -24,6 +24,5 @@ extracted from the images,
 I'm also passionate about photography. Both film, and digital. 
 I am particularly happy when robotics and photography intersect:
 when I get the opportunity to take beautiful pictures of our robots.
-Unfortunately, I haven't received permission to share those photos yet, so you won't find them here.
-Feel free to take a glance at my [photography page](/photography/) to see some of the (non-robot)
+Feel free to take a glance at my [photography page](/photography/) to see some of the 
 photos I've taken. Hopefully, I'll be able to share more soon.
