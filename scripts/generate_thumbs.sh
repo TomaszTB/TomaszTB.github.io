@@ -11,7 +11,7 @@ for img in "$SOURCE_DIR"/*.{jpg,jpeg,png,JPG,JPEG,PNG}; do
     
     filename=$(basename "$img")
     
-    if [ ! -f "$THUMB_DIR/$filename" ]; then
+    if [ ! -f "$THUMB_DIR/$filename" ] || [ "$img" -nt "$THUMB_DIR/$filename" ]; then
         echo "Generating thumbnail for $filename..."
         magick "$img" -resize 1080x1080\> -quality 85 "$THUMB_DIR/$filename"
     fi
