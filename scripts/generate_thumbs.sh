@@ -16,4 +16,12 @@ for img in "$SOURCE_DIR"/*.{jpg,jpeg,png,JPG,JPEG,PNG}; do
         magick "$img" -resize 1080x1080\> -quality 85 "$THUMB_DIR/$filename"
     fi
 done
+for thumb in "$THUMB_DIR"/*.{jpg,jpeg,png,JPG,JPEG,PNG}; do
+    [ -f "$thumb" ] || continue
+    filename=$(basename "$thumb")
+    if [ ! -f "$SOURCE_DIR/$filename" ]; then
+        echo "Removing orphaned thumbnail for $filename..."
+        rm "$thumb"
+    fi
+done
 echo "Done!"
