@@ -19,10 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install ImageMagick
+      - name: Install ImageMagick 7
         run: |
-          sudo apt-get update
-          sudo apt-get install -y imagemagick
+          curl -fsSL "https://release-assets.githubusercontent.com/github-production-release-asset/35780977/4a821e43-5ac3-4be1-a323-955bba497b2c" -o /tmp/magick.AppImage
+          chmod +x /tmp/magick.AppImage
+          sudo ln -s /tmp/magick.AppImage /usr/local/bin/magick
 
       - name: Generate thumbnails
         run: |
