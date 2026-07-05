@@ -1,0 +1,38 @@
+name: Generate Photography Thumbnails
+
+on:
+  push:
+    paths:
+      - 'images/photography/*.jpg'
+      - 'images/photography/*.jpeg'
+      - 'images/photography/*.png'
+      - 'images/photography/*.JPG'
+      - 'images/photography/*.JPEG'
+      - 'images/photography/*.PNG'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ImageMagick
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick
+
+      - name: Generate thumbnails
+        run: |
+          chmod +x scripts/generate_thumbs.sh
+          scripts/generate_thumbs.sh
+
+      - name: Commit generated thumbnails
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add images/photography/thumbs
+          git commit -m "Generate photography thumbnails" || echo "No changes to commit"
+          git push
